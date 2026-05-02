@@ -44,3 +44,20 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 .tech-card p { font-size: 0.95rem; color: var(--text-muted); }
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+    .container { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .hero .tagline { font-size: 1.3rem; }
+    .dual-sections { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .btn { width: 100%; text-align: center; }
+}
