@@ -42,3 +42,5 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 .tech-card .label { font-size: 0.8rem; color: var(--accent-sky); letter-spacing: 1px; font-weight: bold; }
 .tech-card h4 { font-size: 1.5rem; margin-top: 15px; margin-bottom: 10px; }
 .tech-card p { font-size: 0.95rem; color: var(--text-muted); }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
