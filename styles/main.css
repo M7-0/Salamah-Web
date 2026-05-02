@@ -59,3 +59,13 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
 .btn-primary:hover { background: transparent; color: var(--accent); }
 .btn-secondary { color: var(--text); border: 2px solid var(--border); margin-left: 20px; }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Features */
+.features { padding: 100px 0; border-top: 1px solid var(--border); }
+.section-title { font-size: 3rem; text-align: center; margin-bottom: 60px; letter-spacing: -1px; }
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.feature-card { background: var(--surface); padding: 50px 40px; border: 2px solid var(--border); transition: 0.4s; position: relative; }
+.feature-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.feature-card .icon-wrapper { color: var(--accent); margin-bottom: 25px; }
+.feature-card h3 { font-size: 1.75rem; margin-bottom: 15px; }
+.feature-card p { color: var(--text-muted); line-height: 1.7; }
