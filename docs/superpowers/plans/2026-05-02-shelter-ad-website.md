@@ -10,58 +10,25 @@
 
 ---
 
-### Task 1: Foundation & Typography
+### Task 1: Theme Engine & Global Styles
+
+**Goal:** Initialize the project with a robust theme engine and global styles using the "Public Sans" font and dynamic CSS variables.
 
 **Files:**
-- Create: `index.html`
-- Create: `styles/main.css`
+- Create: `index.html` (Overwrite existing)
+- Create: `styles/main.css` (Overwrite existing)
 
-- [ ] **Step 1: Set up HTML boilerplate with font imports**
+- [ ] **Step 1: Set up HTML boilerplate**
+  - Use `https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&display=swap`.
+  - Set `data-theme="dark"` on `<html>`.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shelter: War Relief & Safety</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body class="bg-navy text-light">
-    <main id="app">
-        <!-- Content injected here -->
-    </main>
-</body>
-</html>
-```
-
-- [ ] **Step 2: Initialize CSS variables and global styles**
-
-```css
-:root {
-    --bg-navy: #0f172a;
-    --surface-slate: #1e293b;
-    --accent-sky: #38bdf8;
-    --text-light: #f1f5f9;
-    --text-muted: #94a3b8;
-    --alert-red: #ef4444;
-    --alert-green: #22c55e;
-    --font-heading: 'EB Garamond', serif;
-    --font-body: 'Lato', sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg-navy); color: var(--text-light); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-h1, h2, h3 { font-family: var(--font-heading); }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.bg-navy { background: var(--bg-navy); }
-.text-light { color: var(--text-light); }
-```
+- [ ] **Step 2: Initialize Dynamic CSS Variables**
+  - Define variables for both light and dark themes in `styles/main.css`.
+  - Implement base resets and container styles.
 
 - [ ] **Step 3: Commit**
+  - Run: `git add index.html styles/main.css`
+  - Run: `git commit -m "feat: initialize theme engine and global styles"`
 
 ### Task 2: Hero Section Implementation
 
