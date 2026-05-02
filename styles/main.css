@@ -1,0 +1,18 @@
+:root {
+    --bg-navy: #0f172a;
+    --surface-slate: #1e293b;
+    --accent-sky: #38bdf8;
+    --text-light: #f1f5f9;
+    --text-muted: #94a3b8;
+    --alert-red: #ef4444;
+    --alert-green: #22c55e;
+    --font-heading: 'EB Garamond', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-navy); color: var(--text-light); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--font-heading); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.bg-navy { background: var(--bg-navy); }
+.text-light { color: var(--text-light); }
