@@ -6,6 +6,7 @@
     --text-muted: #94a3b8;
     --accent: #38bdf8;
     --border: rgba(56, 189, 248, 0.2);
+    --glass-bg: rgba(15, 23, 42, 0.8);
 }
 
 [data-theme="light"] {
@@ -15,30 +16,26 @@
     --text-muted: #64748b;
     --accent: #1e40af;
     --border: rgba(30, 41, 59, 0.1);
+    --glass-bg: rgba(241, 245, 249, 0.8);
 }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-    transition: background 0.3s, color 0.3s, border-color 0.3s; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+body { background: var(--bg); color: var(--text); font-family: 'Public Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-body { 
-    background: var(--bg); 
-    color: var(--text); 
-    font-family: 'Public Sans', sans-serif; 
-    line-height: 1.6; 
-    overflow-x: hidden; 
-}
+/* Navbar */
+.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 1.25rem 0; transition: padding 0.3s, background 0.3s; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { font-size: 1.25rem; font-weight: 900; color: var(--accent); letter-spacing: 4px; }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; opacity: 0.8; }
+.nav-links a:hover { color: var(--accent); opacity: 1; }
 
-h1, h2, h3, h4 { 
-    font-weight: 900; 
-    line-height: 1.1; 
-}
+.theme-toggle-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; overflow: hidden; }
+.theme-toggle-btn:hover { border-color: var(--accent); transform: scale(1.05); }
 
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 2rem; 
-}
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="light"] .moon-icon { display: block; }

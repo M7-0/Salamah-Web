@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salamah Prototype Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;700;900&family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --viewer-bg: #f1f5f9;
+            --viewer-ui: #ffffff;
+            --viewer-text: #0f172a;
+            --accent: #3b82f6;
+        }
+
+        [data-theme="dark"] {
+            --viewer-bg: #020617;
+            --viewer-ui: #1e293b;
+            --viewer-text: #f8fafc;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
+        body { font-family: 'Inter', sans-serif; background: var(--viewer-bg); color: var(--viewer-text); overflow: hidden; height: 100vh; }
+
+        /* Viewer UI Overlay */
+        #ui-layer {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 70px;
+            background: var(--viewer-ui);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .nav-controls { display: flex; gap: 15px; align-items: center; }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: var(--viewer-ui);
+            color: var(--viewer-text);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .theme-toggle {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--viewer-bg);
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        #prototype-container {
+            margin-top: 70px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .prototype-page {
+            display: none;
+            width: 100%;
+            min-height: 200vh; /* Simulate a long scrolling page */
+            padding-bottom: 100px;
+        }
+
+        .prototype-page.active { display: block; }
+
+        /* MOCKUP STYLES */
+        .hero { padding: 120px 40px; text-align: center; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+        .feature-card { padding: 40px; border-radius: 12px; }
+        .stats { display: flex; justify-content: center; gap: 80px; padding: 80px 0; border-top: 1px solid rgba(0,0,0,0.1); }
+        .stat-val { font-size: 4rem; font-weight: 900; }
+
+        /* --- 1. SANCTUARY (Refined/Luxury) --- */
+        #p1 { font-family: 'EB Garamond', serif; }
+        #p1[data-p-theme="light"] { background: #fdfaf3; color: #1e1b4b; }
+        #p1[data-p-theme="dark"] { background: #1a1a1a; color: #fef3c7; }
+        #p1 .hero h1 { font-size: 5rem; font-style: italic; }
+        #p1 .accent { color: #b45309; }
+
+        /* --- 2. COMMAND (Tactical) --- */
+        #p2 { font-family: 'JetBrains Mono', monospace; }
+        #p2[data-p-theme="light"] { background: #f8fafc; color: #0f172a; }
+        #p2[data-p-theme="dark"] { background: #020617; color: #10b981; }
+        #p2 .hero { text-align: left; max-width: 900px; margin: 0 auto; }
+        #p2 .hero h1 { font-size: 4rem; border-left: 10px solid currentColor; padding-left: 30px; }
+
+        /* --- 3. LEDGER (Brutalist) --- */
+        #p3 { font-family: 'Inter', sans-serif; }
+        #p3[data-p-theme="light"] { background: #fff; color: #000; }
+        #p3[data-p-theme="dark"] { background: #000; color: #fff; }
+        #p3 .hero h1 { font-size: 8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -5px; }
+        #p3 .feature-card { border: 4px solid currentColor; border-radius: 0; }
+
+        /* --- 4. LIFE-LINE (Modern Social) --- */
+        #p4 { font-family: 'Lato', sans-serif; }
+        #p4[data-p-theme="light"] { background: #eff6ff; color: #1e3a8a; }
+        #p4[data-p-theme="dark"] { background: #0f172a; color: #38bdf8; }
+        #p4 .hero h1 { font-size: 4rem; font-weight: 900; }
+        #p4 .feature-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* --- 5. MOSAIC (Editorial) --- */
+        #p5 { font-family: 'Playfair Display', serif; }
+        #p5[data-p-theme="light"] { background: #fafaf9; color: #44403c; }
+        #p5[data-p-theme="dark"] { background: #1c1917; color: #e7e5e4; }
+        #p5 .hero { display: flex; align-items: center; text-align: left; min-height: 80vh; }
+        #p5 .hero h1 { font-size: 6rem; line-height: 0.9; }
+
+        /* --- 6. SHIELD (Architectural Security) --- */
+        #p6 { font-family: 'Inter', sans-serif; }
+        #p6[data-p-theme="light"] { background: #f1f5f9; color: #1e293b; }
+        #p6[data-p-theme="dark"] { background: #0f172a; color: #f8fafc; }
+        #p6 .hero h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: 10px; text-transform: uppercase; }
+        #p6 .accent { color: #38bdf8; }
+
+        /* --- 7. HORIZON (Organic/Soft) --- */
+        #p7 { font-family: 'Inter', sans-serif; }
+        #p7[data-p-theme="light"] { background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%); color: #0c4a6e; }
+        #p7[data-p-theme="dark"] { background: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%); color: #e0f2fe; }
+        #p7 .hero h1 { font-size: 4.5rem; background: linear-gradient(to right, #0ea5e9, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    </style>
+</head>
+<body data-theme="light">
+
+    <div id="ui-layer">
+        <div class="nav-controls">
+            <button class="btn" id="prev-btn" onclick="changeProto(-1)">← Back</button>
+            <div style="font-weight: 800; letter-spacing: 2px;">SALAMAH <span id="proto-num" style="color:var(--accent)">1/7</span></div>
+            <button class="btn" id="next-btn" onclick="changeProto(1)">Next →</button>
+        </div>
+        
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div id="proto-name" style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase; opacity: 0.6;">Sanctuary</div>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <svg id="sun" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="prototype-container">
+        
+        <!-- P1: SANCTUARY -->
+        <div class="prototype-page active" id="p1" data-p-theme="light">
+            <header class="hero">
+                <p class="accent" style="letter-spacing: 5px; margin-bottom: 20px;">SAFE PASSAGE</p>
+                <h1>Providing Salamah<br>to those in need.</h1>
+                <p style="max-width: 600px; margin: 40px auto; font-size: 1.4rem;">A refined platform for humanitarian dignity. Built to coordinate aid with absolute transparency and respect.</p>
+                <button style="padding: 20px 50px; background: #1e1b4b; color: white; border: none; font-family: inherit; font-size: 1.1rem; cursor: pointer;">Explore the Mission</button>
+            </header>
+            <section class="features">
+                <div class="feature-card" style="background: rgba(180, 83, 9, 0.05); border: 1px solid rgba(180, 83, 9, 0.1);">
+                    <h3 class="accent">Secure Identity</h3>
+                    <p>Protecting vulnerable populations through advanced anonymous authentication.</p>
+                </div>
+                <div class="feature-card" style="background: rgba(180, 83, 9, 0.05); border: 1px solid rgba(180, 83, 9, 0.1);">
+                    <h3 class="accent">Real-time Relief</h3>
+                    <p>Instantly updating shelter capacities to ensure no one is turned away.</p>
+                </div>
+                <div class="feature-card" style="background: rgba(180, 83, 9, 0.05); border: 1px solid rgba(180, 83, 9, 0.1);">
+                    <h3 class="accent">Atomic Trust</h3>
+                    <p>Every donation is tracked with mathematical certainty and zero race conditions.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- P2: COMMAND -->
+        <div class="prototype-page" id="p2" data-p-theme="dark">
+            <header class="hero">
+                <div style="margin-bottom: 30px;">[ INITIALIZING_SALAMAH_PROTOCOL ]</div>
+                <h1>HARDENED RELIEF<br>SYSTEM_v3.0</h1>
+                <p style="margin: 40px 0; font-size: 1.1rem; max-width: 600px;">Deploying high-integrity infrastructure for crisis zone coordination. Real-time maps. Atomic state. Zero failure tolerance.</p>
+                <div style="display: flex; gap: 20px;">
+                    <button style="padding: 15px 30px; background: currentColor; color: #020617; border: none; font-family: inherit; font-weight: bold; cursor: pointer;">> RUN_SYSTEM_AUDIT</button>
+                    <button style="padding: 15px 30px; border: 1px solid currentColor; background: transparent; color: inherit; font-family: inherit; cursor: pointer;">[ VIEW_MAP ]</button>
+                </div>
+            </header>
+            <section class="features">
+                <div style="border: 1px solid currentColor; padding: 30px;">
+                    <h4>// ATOMIC_ENGINE</h4>
+                    <p>Ensuring 100% data integrity in low-connectivity war zones.</p>
+                </div>
+                <div style="border: 1px solid currentColor; padding: 30px;">
+                    <h4>// RBAC_SECURITY</h4>
+                    <p>Hardware-level identity protection for all relief staff and refugees.</p>
+                </div>
+                <div style="border: 1px solid currentColor; padding: 30px;">
+                    <h4>// GEO_SYNC</h4>
+                    <p>Live spatial indexing of every available resource within 100ms.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- P3: LEDGER -->
+        <div class="prototype-page" id="p3" data-p-theme="light">
+            <header class="hero">
+                <h1>SALAMAH</h1>
+                <h2 style="font-size: 2rem; border-top: 4px solid currentColor; display: inline-block; padding-top: 10px; margin-top: 20px;">PRECISION AID.</h2>
+                <p style="margin: 60px auto; font-size: 1.5rem; max-weight: 800; max-width: 800px; text-align: left;">The clinical standard for war-zone logistics. We don't just coordinate; we secure the entire chain of custody.</p>
+            </header>
+            <section class="features" style="grid-template-columns: 1fr 1fr;">
+                <div class="feature-card">
+                    <h3>01. ZERO RACE CONDITIONS</h3>
+                    <p>Our atomic transaction layer ensures that aid is never double-promised or lost.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>02. OFFLINE DOMINANCE</h3>
+                    <p>Built for the blackout. Syncs automatically the moment the grid returns.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- P4: LIFE-LINE -->
+        <div class="prototype-page" id="p4" data-p-theme="light">
+            <header class="hero">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 40px;">
+                    <div style="width: 60px; height: 60px; background: #3b82f6; border-radius: 15px;"></div>
+                    <span style="font-size: 2rem; font-weight: 900;">Salamah</span>
+                </div>
+                <h1>Help is on the way.</h1>
+                <p style="margin: 30px auto; font-size: 1.3rem; max-width: 600px; opacity: 0.8;">Find a shelter, claim a donation, or volunteer in seconds. Simple, fast, and secure.</p>
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+                    <div style="background: #000; color: white; padding: 15px 30px; border-radius: 12px; font-weight: bold;">App Store</div>
+                    <div style="background: #000; color: white; padding: 15px 30px; border-radius: 12px; font-weight: bold;">Play Store</div>
+                </div>
+            </header>
+            <section class="features">
+                <div class="feature-card">
+                    <h3>Find Safety</h3>
+                    <p>Live maps show you the nearest verified safe zones instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Claim Aid</h3>
+                    <p>Digital tokens ensure you get the supplies allocated to you.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Stay Private</h3>
+                    <p>Anonymous login keeps your location and identity safe.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- P5: MOSAIC -->
+        <div class="prototype-page" id="p5" data-p-theme="light">
+            <header class="hero container">
+                <div>
+                   <p style="font-size: 1rem; letter-spacing: 4px; margin-bottom: 30px;">A HUMAN RESPONSE</p>
+                   <h1>The strength of<br>community.<br><span style="font-style: italic; opacity: 0.5;">Secured by Salamah.</span></h1>
+                   <p style="margin-top: 40px; font-size: 1.2rem; max-width: 450px; line-height: 1.8;">We believe that security is the foundation of hope. Our infrastructure allows communities to help themselves safely.</p>
+                </div>
+            </header>
+            <section style="padding: 100px 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto;">
+                <div style="background: #e7e5e4; height: 500px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 2rem; opacity: 0.5;">[ Full-Width Impact Photo ]</div>
+                <div style="display: flex; flex-direction: column; justify-content: center; gap: 30px;">
+                    <h3 style="font-size: 2rem;">Integrity by Design</h3>
+                    <p style="font-family: 'Lato', sans-serif;">Every line of code in Salamah is written to protect those who have lost everything.</p>
+                    <a href="#" style="color: inherit; font-weight: bold; border-bottom: 2px solid currentColor; align-self: flex-start; padding-bottom: 5px;">Read the Whitepaper</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- P6: SHIELD -->
+        <div class="prototype-page" id="p6" data-p-theme="dark">
+            <header class="hero">
+                <div style="border: 1px solid #38bdf8; display: inline-block; padding: 40px 80px; margin-bottom: 60px;">
+                    <h1 style="margin:0">SALAMAH</h1>
+                </div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px;">HARDENED DATA LAYER</h2>
+                <p style="max-width: 700px; margin: 0 auto; line-height: 2; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">
+                    Institutional grade relief coordination. Built for governments. Trusted by NGOs. Hardened for the front lines.
+                </p>
+            </header>
+            <section class="stats container">
+                <div>
+                    <div class="stat-val accent">100%</div>
+                    <div class="label">ATOMIC INTEGRITY</div>
+                </div>
+                <div>
+                    <div class="stat-val accent">256-BIT</div>
+                    <div class="label">ENCRYPTED CORE</div>
+                </div>
+                <div>
+                    <div class="stat-val accent">GLOBAL</div>
+                    <div class="label">DISTRIBUTION</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- P7: HORIZON -->
+        <div class="prototype-page" id="p7" data-p-theme="light">
+            <header class="hero">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 0 auto 40px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h1>Relief, redefined.</h1>
+                <p style="max-width: 650px; margin: 40px auto; font-size: 1.5rem; line-height: 1.6; font-weight: 300;">Salamah is a modern response to timeless challenges. We use next-gen tech to bring immediate safety to communities in crisis.</p>
+                <div style="display: flex; justify-content: center; gap: 30px;">
+                    <button style="padding: 18px 40px; background: linear-gradient(to right, #0ea5e9, #6366f1); color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);">Get Started</button>
+                    <button style="padding: 18px 40px; background: white; color: #6366f1; border: 1px solid #e2e8f0; border-radius: 50px; font-weight: bold; cursor: pointer;">Learn More</button>
+                </div>
+            </header>
+            <div style="max-width: 1000px; margin: 0 auto; border-radius: 24px; background: white; padding: 10px; box-shadow: 0 40px 100px rgba(0,0,0,0.1);">
+                <div style="height: 500px; background: #f8fafc; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #cbd5e1; font-style: italic;">[ Interactive Map Preview ]</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentIdx = 1;
+        const total = 7;
+        const names = ["Sanctuary", "Command Center", "The Ledger", "Life-Line", "The Mosaic", "The Shield", "The Horizon"];
+
+        function changeProto(delta) {
+            const nextIdx = currentIdx + delta;
+            if (nextIdx < 1 || nextIdx > total) return;
+            
+            // Update UI
+            document.getElementById(`p${currentIdx}`).classList.remove('active');
+            currentIdx = nextIdx;
+            document.getElementById(`p${currentIdx}`).classList.add('active');
+            
+            document.getElementById('proto-num').innerText = `${currentIdx}/${total}`;
+            document.getElementById('proto-name').innerText = names[currentIdx-1];
+            
+            document.getElementById('prev-btn').disabled = (currentIdx === 1);
+            document.getElementById('next-btn').disabled = (currentIdx === total);
+            
+            // Sync current prototype's theme to the viewer theme toggle
+            const pTheme = document.getElementById(`p${currentIdx}`).getAttribute('data-p-theme');
+            document.body.setAttribute('data-theme', pTheme);
+            
+            // Scroll to top
+            document.getElementById('prototype-container').scrollTop = 0;
+        }
+
+        function toggleTheme() {
+            const currentP = document.getElementById(`p${currentIdx}`);
+            const currentTheme = currentP.getAttribute('data-p-theme');
+            const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            currentP.setAttribute('data-p-theme', nextTheme);
+            document.body.setAttribute('data-theme', nextTheme);
+        }
+
+        // Initialize
+        document.getElementById('prev-btn').disabled = true;
+    </script>
+</body>
+</html>
