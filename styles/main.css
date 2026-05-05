@@ -160,6 +160,11 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
 }
 
 @media (max-width: 768px) {
+    .container { 
+        width: 90%; 
+        padding: 0 5%; 
+        max-width: none;
+    }
     .nav-links { display: none; }
     .hero-frame { padding: 40px 20px; }
     .hero-frame h1 { font-size: 4rem; letter-spacing: 5px; }
