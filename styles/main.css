@@ -175,7 +175,21 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
     }
     .hero-tagline { font-size: 1.1rem; }
     .feature-grid { grid-template-columns: 1fr; }
-    .stats-grid { flex-direction: column; gap: 60px; }
+    .stats-grid { 
+        flex-direction: row; 
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .stat-item {
+        padding: 10px 5px;
+    }
+    .stat-number {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+    }
+    .stat-item .label {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+    }
     .mobile-frame { display: none; }
     .desktop-frame { transform: scale(0.9); }
 }
