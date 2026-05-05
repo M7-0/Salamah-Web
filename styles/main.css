@@ -190,6 +190,16 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
         font-size: 0.6rem;
         letter-spacing: 0;
     }
-    .mobile-frame { display: none; }
-    .desktop-frame { transform: scale(0.9); }
+    .mobile-frame { 
+        display: block; 
+        position: relative;
+        bottom: 0;
+        right: 0;
+        transform: scale(0.7); 
+        margin: 20px auto 0;
+    }
+    .desktop-frame {
+        transform: scale(min(0.85, 85vw / 1000px));
+        transform-origin: top center;
+    }
 }
