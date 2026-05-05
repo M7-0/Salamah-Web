@@ -1,0 +1,56 @@
+<h2>Perfecting Mobile Sizing & Scale</h2>
+<p class="subtitle">Solving the "terrible" scale issues through mathematical and proportional refinement</p>
+
+<div class="section">
+  <h3>What's wrong with the current scale?</h3>
+  <p>The current <code>768px</code> breakpoint uses "step-down" logic that isn't granular enough. A 4rem header on a 375px phone is ~50% of the screen width, which feels claustrophobic and "off-scale."</p>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="fluid" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Fluid/Mathematical Scaling</h3>
+      <p>Use <code>clamp()</code> for all typography and gaps. The site scales perfectly line-by-line as the phone gets smaller. No "jumps" between sizes.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="proportional" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Proportional Viewport Scaling</h3>
+      <p>Scale the entire container using <code>vw</code> units for margins and padding. Maintains the "Desktop Look" but perfectly miniaturized for the phone.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="surgical" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Breakpoint-Surgical Scaling</h3>
+      <p>Add specific overrides for 480px (typical phone) that aggressively reduce H1, stats, and feature card padding to reclaim white space.</p>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Current (Out of Scale)</div>
+    <div class="mockup-body" style="padding: 10px; text-align: center; border: 2px solid #ff4444;">
+       <h1 style="font-size: 4rem; margin: 0; line-height: 1;">SALAMAH</h1>
+       <div style="background: #222; height: 100px; margin: 20px 0;">Large Mockup Box (Overflows)</div>
+       <div style="display: flex; gap: 20px; justify-content: center;">
+         <div style="font-size: 2rem;">100%</div>
+         <div style="font-size: 2rem;">1s</div>
+       </div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Proposed (In Scale)</div>
+    <div class="mockup-body" style="padding: 10px; text-align: center; border: 2px solid #44ff44;">
+       <h1 style="font-size: 2.2rem; margin: 0; letter-spacing: 2px;">SALAMAH</h1>
+       <div style="background: #222; height: 60px; margin: 15px auto; width: 80%;">Scaled Mockup Box</div>
+       <div style="display: flex; gap: 10px; justify-content: center;">
+         <div style="font-size: 1.2rem; font-weight: bold;">100% <span style="font-size: 0.6rem; display: block;">INTEGRITY</span></div>
+         <div style="font-size: 1.2rem; font-weight: bold;">1s <span style="font-size: 0.6rem; display: block;">LATENCY</span></div>
+       </div>
+    </div>
+  </div>
+</div>
