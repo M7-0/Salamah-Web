@@ -167,7 +167,12 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
     }
     .nav-links { display: none; }
     .hero-frame { padding: 40px 20px; }
-    .hero-frame h1 { font-size: 4rem; letter-spacing: 5px; }
+    .hero-frame h1 { 
+        font-size: clamp(2.2rem, 12vw, 4rem); 
+        letter-spacing: clamp(2px, 2vw, 5px);
+        width: 100%;
+        text-align: center;
+    }
     .hero-tagline { font-size: 1.1rem; }
     .feature-grid { grid-template-columns: 1fr; }
     .stats-grid { flex-direction: column; gap: 60px; }
