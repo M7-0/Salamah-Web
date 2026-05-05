@@ -1,0 +1,58 @@
+<h2>Balancing the Scale & Refining the Footer</h2>
+<p class="subtitle">Ensuring perfect centering and a hardened footer design</p>
+
+<div class="section">
+  <h3>1. Correcting the "Left-Heavy" Alignment</h3>
+  <p>To ensure the layout is perfectly centered without any visual drift, we'll simplify the container logic. Instead of nested percentages, we'll use a clean symmetric margin.</p>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="centering-fix" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Symmetric Centering</h3>
+      <p>Use <code>margin: 0 auto</code> with a <code>width: calc(100% - 40px)</code>. This ensures an identical 20px "air gap" on both sides, guaranteed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>2. Improving the Contact Section</h3>
+  <p>The current "For more information" link is a bit plain. Let's give it more weight to match the "Hardened Infrastructure" theme.</p>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="footer-pill" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>The "Command Pill"</h3>
+      <p>Encapsulate the email in a high-contrast pill with a subtle border, making it feel like a call-to-action.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="footer-minimal" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hardened Minimalism</h3>
+      <p>Use a monospaced font for the email with a leading icon, emphasizing the technical nature of the project.</p>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Current Footer</div>
+    <div class="mockup-body" style="padding: 20px; text-align: center;">
+       <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">For more information:</div>
+       <div style="font-weight: bold; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">info@salamah.me</div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Proposed "Command Pill"</div>
+    <div class="mockup-body" style="padding: 20px; text-align: center;">
+       <div style="display: inline-block; padding: 10px 20px; border: 1px solid #38bdf8; border-radius: 50px; background: rgba(56, 189, 248, 0.05);">
+         <span style="font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-right: 10px;">INQUIRIES:</span>
+         <span style="font-weight: 900; color: #38bdf8; font-size: 0.8rem;">INFO@SALAMAH.ME</span>
+       </div>
+    </div>
+  </div>
+</div>

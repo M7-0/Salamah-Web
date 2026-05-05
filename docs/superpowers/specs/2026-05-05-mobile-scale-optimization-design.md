@@ -13,21 +13,26 @@ The current mobile view (specifically for devices < 768px) suffers from "terribl
 - Improve the visual "breathing room" in the layout.
 
 ## 3. Architecture & Changes
-
 ### 3.1 Fluid Container System
 - **Selector:** `.container`
-- **Mobile Change:** Update `padding` and `width` logic.
-- **Logic:** Use a responsive gutter that scales between 15px and 20px based on viewport width.
+- **Mobile Change:** Simplify to a fixed-padding model for guaranteed symmetry.
+- **Logic:** Use `padding: 0 20px` with `width: 100%` and `box-sizing: border-box`.
 - **Implementation:**
   ```css
   @media (max-width: 768px) {
     .container {
-      width: 90%;
-      padding: 0 5%;
-      margin: 0 auto;
+      width: 100%;
+      padding: 0 20px;
+      margin: 0;
+      max-width: none;
     }
   }
   ```
+
+### 3.2 Footer Contact Refinement
+- **Text:** Change "Inquiries" or plain label to "FOR MORE INFORMATION:".
+- **Style:** Wrap in a high-contrast pill/border for better visual hierarchy.
+
 
 ### 3.2 Typographic Scaling (Horizontal)
 - **H1 Header:** Use `clamp()` to ensure the logo/title stays on one line.
