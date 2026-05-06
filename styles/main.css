@@ -100,11 +100,10 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
     animation: drift 60s linear infinite;
 }
 
-.dashboard-preview { padding: 120px 0; border-top: 1px solid var(--border); }
-.mockup-container { position: relative; max-width: 1000px; margin: 0 auto; padding-bottom: 100px; }
+.mockup-container { position: relative; max-width: 1000px; margin: 0 auto; }
 
 /* Desktop Frame */
-.desktop-frame { background: var(--surface); border-radius: 12px; overflow: hidden; border: 2px solid var(--border); box-shadow: 0 40px 100px rgba(0,0,0,0.4); }
+.desktop-frame { background: var(--surface); border-radius: 12px; overflow: hidden; border: 2px solid var(--border); box-shadow: 0 40px 100px rgba(0,0,0,0.4); transition: transform 0.3s; }
 .desktop-header { background: var(--bg); padding: 12px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--border); }
 .desktop-header .dots { display: flex; gap: 6px; }
 .desktop-header .dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
@@ -119,12 +118,22 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
 .mock-map { flex-grow: 1; background: var(--surface); border-radius: 6px; border: 1px solid var(--border); position: relative; display: flex; align-items: center; justify-content: center; }
 
 /* Mobile Frame */
-.mobile-frame { position: absolute; bottom: -40px; right: -20px; width: 220px; height: 440px; background: var(--surface); border-radius: 36px; border: 8px solid var(--bg); box-shadow: 0 30px 60px rgba(0,0,0,0.5); z-index: 10; display: flex; flex-direction: column; padding: 15px; }
+.mobile-frame { position: relative; width: 220px; height: 440px; background: var(--surface); border-radius: 36px; border: 8px solid var(--bg); box-shadow: 0 30px 60px rgba(0,0,0,0.5); z-index: 10; display: flex; flex-direction: column; padding: 15px; margin: 40px auto 0; transition: transform 0.3s; }
 .mobile-speaker { width: 50px; height: 4px; background: var(--bg); border-radius: 2px; margin: 5px auto 15px; }
 .mobile-content { flex-grow: 1; background: var(--bg); border-radius: 20px; overflow: hidden; padding: 15px; }
 .mock-app-ui .app-header { background: var(--accent); color: var(--bg); width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 20px; }
 .app-list span { display: block; height: 40px; background: var(--surface); border-radius: 6px; margin-bottom: 10px; border: 1px solid var(--border); }
 .mobile-button { width: 35px; height: 35px; border: 2px solid var(--bg); border-radius: 50%; margin: 15px auto 0; }
+
+@media only screen and (min-width: 769px) {
+    .mockup-container { padding-bottom: 100px; }
+    .mobile-frame {
+        position: absolute;
+        bottom: -40px;
+        right: -20px;
+        margin: 0;
+    }
+}
 
 .pulse {
     width: 20px;
@@ -192,10 +201,17 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
 @media (max-width: 768px) {
     .container { 
         width: 100%; 
-        padding: 0 20px; 
+        padding-left: 20px;
+        padding-right: 20px;
         margin: 0;
         max-width: none;
     }
+    .hero { padding: 120px 0 60px; }
+    .features { padding: 60px 0; }
+    .impact-stats { padding: 60px 0; }
+    .dashboard-preview { padding: 60px 0; }
+    .footer { padding: 40px 0; }
+
     .nav-links { display: none; }
     .hero-frame { padding: 40px 20px; }
     .hero-frame h1 { 
@@ -222,15 +238,16 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
         letter-spacing: 0;
     }
     .mobile-frame { 
-        display: block; 
-        position: relative;
-        bottom: 0;
-        right: 0;
         transform: scale(0.7); 
         margin: 20px auto 0;
     }
-    .desktop-frame {
-        transform: scale(min(0.85, 85vw / 1000px));
-        transform-origin: top center;
-    }
-}
+
+/* Breakpoint Reference */
+/* Mobile */ @media only screen and (min-width: 480px) {}
+/* Tablet */ @media only screen and (min-width: 768px) {}
+/* Desktop */ @media only screen and (min-width: 992px) {}
+/* Huge */ @media only screen and (min-width: 1280px) {}
+
+/* Phone */ @media only screen and (max-width: 320px) {}
+/* Tablet (Range) */ @media only screen and (min-width: 321px) and (max-width: 768px) {}
+/* Desktop (Min) */ @media only screen and (min-width: 769px) {}
