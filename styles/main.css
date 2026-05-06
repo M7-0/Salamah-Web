@@ -263,10 +263,17 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
         margin: 0;
         max-width: none;
     }
+    
+    #integrity.container, #app.container {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
     .hero { padding: 120px 0 60px; }
     .features { padding: 60px 0; }
-    .impact-stats { padding: 60px 0; }
+    .impact-stats { padding: 10px 0; }
     .dashboard-preview { padding: 60px 0; }
+    .repo-section { margin-top: -20px; padding-bottom: 20px; }
     .footer { padding: 40px 0; }
 
     .nav-links { display: none; }
@@ -278,23 +285,30 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
         text-align: center;
     }
     .hero-tagline { font-size: 1.1rem; }
-    .repo-grid { grid-template-columns: 1fr; }
+    .repo-grid { grid-template-columns: 1fr; gap: 10px; }
     .feature-grid { grid-template-columns: 1fr; }
     .stats-grid { 
         flex-direction: row; 
-        justify-content: space-between;
-        gap: 10px;
+        justify-content: center;
+        gap: 70px;
     }
     .stat-item {
-        padding: 10px 5px;
+        padding: 0;
     }
     .stat-number {
         font-size: clamp(1.5rem, 8vw, 2.5rem);
     }
     .stat-item .label {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         letter-spacing: 0;
     }
+
+    .pill-label {
+        font-size: 0.6rem;
+        letter-spacing: 0;
+        margin-right: -5px;
+    }
+
     .mobile-frame { 
         transform: scale(0.7); 
         margin: 20px auto 0;

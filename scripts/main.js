@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = parseFloat(targetStr);
         const isDecimal = targetStr.includes('.');
         let count = 0;
-        const duration = 2000;
+        const duration = 1600;
         const inc = target / (duration / 16);
 
         function update() {
