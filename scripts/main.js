@@ -15,8 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Navigation Glow Observer
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    
+    const navObserverOptions = {
+        threshold: 0.5,
+        rootMargin: "0px 0px -20% 0px"
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => navObserver.observe(section));
+
     function animateCount(el) {
-        const target = parseInt(el.getAttribute('data-target'));
+        const targetStr = el.getAttribute('data-target');
+        const target = parseFloat(targetStr);
+        const isDecimal = targetStr.includes('.');
         let count = 0;
         const duration = 2000;
         const inc = target / (duration / 16);
@@ -24,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function update() {
             count += inc;
             if (count < target) {
-                el.innerText = Math.ceil(count);
+                el.innerText = isDecimal ? count.toFixed(1) : Math.ceil(count);
                 requestAnimationFrame(update);
             } else {
-                el.innerText = target;
+                el.innerText = targetStr;
             }
         }
         update();
