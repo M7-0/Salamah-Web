@@ -95,37 +95,35 @@
 
         <section id="app" class="dashboard-preview container">
             <h2 class="section-title">The Salamah Console</h2>
-            <div class="mockup-container">
-                <!-- Desktop Frame -->
-                <div class="desktop-frame fade-in">
-                    <div class="desktop-header">
-                        <div class="dots"><span></span><span></span><span></span></div>
-                        <div class="address-bar">salamah.security/node-01</div>
+            <div class="console-wrapper">
+                <!-- Tier 1: Roles -->
+                <div class="role-selector">
+                    <button class="role-btn active" onclick="setRole('guest', this)">Guest</button>
+                    <button class="role-btn" onclick="setRole('refugee', this)">Refugee</button>
+                    <button class="role-btn" onclick="setRole('volunteer', this)">Volunteer</button>
+                    <button class="role-btn" onclick="setRole('shelter-admin', this)">Shelter Admin</button>
+                    <button class="role-btn" onclick="setRole('super-admin', this)">Super Admin</button>
+                </div>
+
+                <div class="console-body">
+                    <div class="screenshot-frame">
+                        <img id="console-display" src="" alt="Salamah App View">
                     </div>
-                    <div class="desktop-content">
-                        <div class="mock-ui">
-                            <div class="mock-sidebar"></div>
-                            <div class="mock-main">
-                                <div class="mock-stats"><span></span><span></span><span></span></div>
-                                <div class="mock-map">
-                                    <div class="pulse"></div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div class="side-selector">
+                        <button class="page-link" onclick="setPage('splash', this)">Splash</button>
+                        <button class="page-link" onclick="setPage('signin', this)">Sign In</button>
+                        <button class="page-link" onclick="setPage('signup', this)">Sign Up</button>
                     </div>
                 </div>
-                <!-- Mobile Frame -->
-                <div class="mobile-frame fade-in">
-                    <div class="mobile-speaker"></div>
-                    <div class="mobile-content">
-                        <div class="mock-app-ui">
-                            <div class="app-header">S</div>
-                            <div class="app-list">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mobile-button"></div>
+
+                <!-- Tier 2: Main Pages -->
+                <div class="page-selector">
+                    <button class="page-link active" onclick="setPage('dashboard', this)">Dash</button>
+                    <button id="btn-tasks" class="page-link" onclick="setPage('tasks', this)">Tasks</button>
+                    <button class="page-link" onclick="setPage('map', this)">Map</button>
+                    <button id="btn-news" class="page-link" onclick="setPage('announcements', this)">News</button>
+                    <button class="page-link" onclick="setPage('profile', this)">Profile</button>
                 </div>
             </div>
         </section>
