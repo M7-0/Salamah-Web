@@ -19,10 +19,12 @@
                 SALAMAH
             </div>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#integrity">Integrity</a>
-                <a href="#impact">Impact</a>
-                <a href="#app">Console</a>
+                <a href="#abstract">Abstract</a>
+                <a href="#objectives">Objectives</a>
+                <a href="#tech-stack">Technology</a>
+                <a href="#app">Result</a>
+                <a href="#conclusion">Conclusion</a>
+                <a href="#team">Team</a>
             </div>
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
                 <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -31,6 +33,17 @@
         </div>
     </nav>
     <main id="main-root">
+        <header class="uob-header container fade-in">
+            <img src="assets/uob_logo.png" alt="University of Bahrain Logo" class="uob-logo">
+            <div class="uob-text">
+                University of Bahrain | Collage of Information System | Department of Computer Science
+            </div>
+            <h1 style="margin-top: 30px; font-size: 3rem; color: var(--accent); letter-spacing: 5px;">SALAMAH APP</h1>
+            <p class="about-description fade-in" style="margin: 20px auto 0 auto; font-size: 1.1rem; width: 100%; color: var(--text);">
+                Salamah is a Real-Time war Relief app designed to provide immediate coordination and Volunteers Recomendation
+            </p>
+        </header>
+
         <section class="hero container">
             <div class="hero-frame fade-in">
                 <img src="assets/logo.jpeg" alt="Salamah Icon" class="hero-logo-lg">
@@ -54,10 +67,75 @@
             </div>
         </section>
 
-        <section id="about" class="about-section container">
-            <h2 class="section-title">The Salamah Ecosystem</h2>
-            <p class="about-description fade-in">Salamah is a Real-Time war Relief app designed to provide immediate coordination and Recommendation for volunteers Mobile Application</p>           
-            <div class="feature-grid">
+        <section id="abstract" class="abstract-section container">
+            <h2 class="section-title">Abstract</h2>
+            <div class="abstract-content fade-in">
+                <p class="abstract-text">
+                    This report discusses the creation of a cross-platform mobile application, Salamah, which is designed
+                    specifically for war relief coordination, with the goal of delivering an individualized, real-time system
+                    to help individuals in high-stakes environments during wars and crisis. The major goal is to develop a
+                    system that manages fragmented relief efforts through centralized logistical oversight. Unlike manual
+                    spreadsheet-based methods, this solution prioritizes data integrity and operational stability by
+                    implementing atomic transactions to manage shelter capacity and volunteer assignments. The system
+                    also adjusts to relief demands through role-based interactions, allowing it to optimize volunteer
+                    dispatching based on evolving site urgency. The project is intended to assist users with volunteer skill-
+                    matching, donation tracking, and shelter capacity management, without the logistical bottlenecks seen
+                    in traditional platforms. The solution overcomes the gap in existing crisis management tools using a 4-
+                    tier cascading recommendation engine, which provides an automated, real-time, and domain-specific
+                    coordination support. This effort will ultimately help to improve humanitarian feedback effectiveness
+                    through unique, secure, and reliable technical integration.
+                </p>
+            </div>
+        </section>
+
+        <section id="objectives" class="about-section container">
+            <h2 class="section-title">Project Objectives</h2>
+            <p class="about-description fade-in">Providing a single source of truth for individuals affected by crisis through specific strategic goals.</p>
+            
+            <div class="objectives-grid fade-in">
+                <div class="objective-group">
+                    <h3>Primary Objectives</h3>
+                    <ul class="objective-list">
+                        <li class="objective-item">
+                            <strong>Real-Time Shelter Coordination</strong>
+                            <p>Achieve high reliability in shelter coordination by implementing atomic operations for capacity tracking to provide instant updates and prevent overbooking.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Intelligent Volunteer Matching</strong>
+                            <p>Develop a matching algorithm that connects volunteers to shelters based on volunteer capabilities, availability, and specific shelter needs.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Role-Based Task Coordination</strong>
+                            <p>Enable shelter admins to create tasks that volunteers can claim, update, and track through to completion.</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="objective-group">
+                    <h3>Technical Objectives</h3>
+                    <ul class="objective-list">
+                        <li class="objective-item">
+                            <strong>Cross-Platform Compatibility</strong>
+                            <p>Develop the application using the Flutter framework to ensure support across Android, iOS, and Web.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Real-Time Data Synchronization</strong>
+                            <p>Implement Firebase Firestore to achieve sub-second data propagation, ensuring all connected devices are synchronized in real time.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Scalable Architecture</strong>
+                            <p>Design a feature-driven modular architecture that supports horizontal scaling and the rapid addition of new functionalities.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="about-section container">
+            <h2 class="section-title">Technology Used</h2>
+            
+            <h3 style="margin-bottom: 30px; font-size: 1.5rem; color: var(--text);">The Salamah Ecosystem</h3>
+            <div class="feature-grid" style="margin-bottom: 50px;">
                 <article class="feature-card fade-in">
                     <div class="icon-wrapper">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M9 2v2"/><path d="M15 2v2"/><path d="M2 9h2"/><path d="M2 15h2"/><path d="M20 9h2"/><path d="M20 15h2"/><path d="M9 20v2"/><path d="M15 20v2"/></svg>
@@ -80,10 +158,60 @@
                     <p>Precision geolocation and coordinate mapping for accurate target zone identification and rescue operations.</p>
                 </article>
             </div>
+            
+            <div class="tech-category fade-in">
+                <h3>Programming Language</h3>
+                <div class="feature-grid">
+                    <article class="feature-card tech-card">
+                        <img src="assets/23393-middle.png" alt="Dart Icon">
+                        <h3>Dart</h3>
+                    </article>
+                </div>
+            </div>
+
+            <div class="tech-category fade-in">
+                <h3>Frameworks</h3>
+                <div class="feature-grid">
+                    <article class="feature-card tech-card">
+                        <img src="assets/flutter_icon_130936.png" alt="Flutter Icon">
+                        <h3>Flutter</h3>
+                    </article>
+                </div>
+            </div>
+
+            <div class="tech-category fade-in">
+                <h3>Database & Storage</h3>
+                <div class="feature-grid">
+                    <article class="feature-card tech-card">
+                        <img src="assets/fire.png" alt="Firebase Icon">
+                        <h3>Firebase</h3>
+                    </article>
+                    <article class="feature-card tech-card">
+                        <img src="assets/cloudinary-icon.png" alt="Cloudinary Icon">
+                        <h3>Cloudinary</h3>
+                    </article>
+                </div>
+            </div>
+
+            <div class="tech-category fade-in">
+                <h3>DevOps & Tools</h3>
+                <div class="feature-grid">
+                    <article class="feature-card tech-card">
+                        <img src="assets/github.png" alt="GitHub Icon">
+                        <h3>GitHub</h3>
+                    </article>
+                    <article class="feature-card tech-card">
+                        <img src="assets/android-studio-icon-1416830442.png" alt="Android Studio Icon">
+                        <h3>Android Studio</h3>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section id="integrity" class="impact-stats">
-            <div class="container stats-grid">
+        <section id="app" class="dashboard-preview container">
+            <h2 class="section-title">Result</h2>
+            
+            <div class="stats-grid" style="margin-bottom: 60px;">
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-target="100">0</div>
                     <div class="stat-unit">%</div>
@@ -95,10 +223,12 @@
                     <div class="label">MAP ACCURACY</div>
                 </div>
             </div>
-        </section>
 
-        <section id="app" class="dashboard-preview container">
-            <h2 class="section-title">The Salamah Console</h2>
+            <div class="architecture-frame fade-in">
+                <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;">Architectural Pattern</h3>
+                <img src="assets/architectural_pattern.jpeg" alt="Salamah Architectural Pattern">
+            </div>
+
             <div class="console-wrapper">
                 <!-- Tier 1: Roles -->
                 <div class="role-selector">
@@ -147,13 +277,128 @@
             </div>
         </section>
 
+        <section id="conclusion" class="conclusion-section container">
+            <h2 class="section-title">Conclusion</h2>
+            <p class="conclusion-text fade-in">
+                The Salamah application provides critical insight into humanitarian aid logistics in high-stakes environments. The 4-tier cascading AI recommendation engine automates volunteer matching based on skills, request urgency, distance, and occupancy, reducing randomness and inefficiency. Integration of atomic Firebase transactions ensures data security and eliminates race conditions regarding shelter capacity. Despite challenges with real-time check-ins in conflict zones and complex shared access management, the application provide a centralizing coordination into a single source of truth, verifying role-based access control, maintaining professional design consistency, and reducing manual effort through high-speed data filtering.
+            </p>
+
+            <div class="conclusion-grid fade-in">
+                <div class="objective-group">
+                    <h3>Improvements</h3>
+                    <ul class="objective-list">
+                        <li class="objective-item">
+                            <strong>Language and Interface</strong>
+                            <p>Implementing multi-language support, including Arabic, and upgrading to a Google Maps API for high-fidelity routing and offline cache capabilities.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Validation and Sorting</strong>
+                            <p>Improving the donation workflow with full traceability and validation, while enhancing the announcement feed with faceted filters for better usability.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Communication</strong>
+                            <p>Integrating a real-time WebSocket or Firestore-based chat service for secure, encrypted peer-to-peer communication.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>System Stability</strong>
+                            <p>Utilizing automation testing to ensure overall system stability.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="objective-group">
+                    <h3>Scalability</h3>
+                    <ul class="objective-list">
+                        <li class="objective-item">
+                            <strong>Advanced Analytics</strong>
+                            <p>Integrating deeper analytic dashboards to provide comprehensive insights into shelter operations.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>AI Automation</strong>
+                            <p>Developing features to automatically analyze volunteer skills and assign tasks, alongside making the system more automated in general.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Emergency Infrastructure</strong>
+                            <p>Implementing an emergency broadcast system to alert all users instantly during crises.</p>
+                        </li>
+                        <li class="objective-item">
+                            <strong>Modular Growth</strong>
+                            <p>Maintaining the ability to add new functionalities to match evolving humanitarian needs and technical requirements.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team-section container">
+            <h2 class="section-title">About The Project & Team</h2>
+            <p class="about-description fade-in">
+                This project is a Final Year Senior Project, Completed During Semester 2 of the Academic Year 2025/2026 At College of Information Technology - University of Bahrain.
+            </p>
+
+            <div class="table-wrapper fade-in">
+                <h3 style="margin-bottom: 20px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;">Students Information</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Major</th>
+                            <th>Email</th>
+                            <th>LinkedIn</th>
+                            <th>GitHub</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mohammed Kamel Ali</td>
+                            <td>Computer Science</td>
+                            <td><a href="mailto:mohdkamil004@gmail.com" class="table-link">mohdkamil004@gmail.com</a></td>
+                            <td><a href="https://www.linkedin.com/in/mohd-" class="table-link" target="_blank">View Profile</a></td>
+                            <td><a href="https://github.com/M7-0" class="table-link" target="_blank">View Profile</a></td>
+                        </tr>
+                        <tr>
+                            <td>Mohammed Ammar Isa</td>
+                            <td>Computer Science-Cloud Computing</td>
+                            <td><a href="mailto:mo.durazi.106@gmail.com" class="table-link">mo.durazi.106@gmail.com</a></td>
+                            <td><a href="https://www.linkedin.com/in/mohammed-alderazi/" class="table-link" target="_blank">View Profile</a></td>
+                            <td><a href="https://github.com/mo-durazi" class="table-link" target="_blank">View Profile</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-wrapper fade-in">
+                <h3 style="margin-bottom: 20px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;">Supervisor</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dr. Hadeel AlObaidy</td>
+                            <td><a href="mailto:halobaidy@uob.edu.bh" class="table-link">halobaidy@uob.edu.bh</a></td>
+                            <td>Assistant Professor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <footer class="footer container">
             <div class="footer-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--accent);">Contact Us</h3>
+                <p style="margin-bottom: 20px; color: var(--text-muted); max-width: 600px; text-align: center;">
+                    Have any question about salamah app , want to learn more about the application We'd love to hear a response or a feedback !
+                </p>
                 <div class="nav-logo">SALAMAH</div>
                 <p>&copy; 2026 Salamah Project.</p>
                 <div class="footer-links">
                     <div class="contact-pill">
-                        <span class="pill-label">FOR MORE INFORMATION:</span>
+                        <span class="pill-label">FOR MORE INFORMATION CONTACT :</span>
                         <a href="mailto:info@salamah.me">info@salamah.me</a>
                     </div>
                 </div>

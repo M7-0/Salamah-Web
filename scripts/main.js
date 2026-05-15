@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
     
     const navObserverOptions = {
-        threshold: 0.5,
-        rootMargin: "0px 0px -20% 0px"
+        threshold: 0.1,
+        rootMargin: "-20% 0px -20% 0px"
     };
 
     const navObserver = new IntersectionObserver((entries) => {
