@@ -53,7 +53,8 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
 
 [data-theme="light"] .logo-icon-sm,
 [data-theme="light"] .hero-logo-lg {
-    mix-blend-mode: darken; /* Better for light mode with dark backgrounds */
+    mix-blend-mode: multiply; 
+    filter: brightness(0); /* Force black for white backgrounds */
 }
 
 @keyframes logo-glow {
