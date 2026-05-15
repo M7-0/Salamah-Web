@@ -51,11 +51,7 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.1; }
     margin-bottom: 3rem;
 }
 
-[data-theme="light"] .logo-icon-sm,
-[data-theme="light"] .hero-logo-lg {
-    mix-blend-mode: normal;
-    filter: invert(1);
-}
+/* Removed logo overrides */
 
 @keyframes logo-glow {
     from { 
