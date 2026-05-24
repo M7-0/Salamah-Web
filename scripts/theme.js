@@ -8,6 +8,17 @@
 window.currentRole = 'guest';
 window.currentPage = 'dashboard';
 
+// Helpers
+const isMobile = () => window.innerWidth <= 768;
+
+const updateThemeForSystem = (e) => {
+    if (isMobile()) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        if (window.updateConsole) window.updateConsole();
+    }
+};
+
 // Shared pages that use the Auth&Shared folder
 const sharedPages = ['map', 'signin', 'signup', 'splash'];
 
@@ -133,16 +144,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    const savedTheme = localStorage.getItem('salamah-theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Initial theme set
+    if (isMobile()) {
+        const initialTheme = systemDarkMode.matches ? 'dark' : 'light';
+        html.setAttribute('data-theme', initialTheme);
+    } else {
+        const savedTheme = localStorage.getItem('salamah-theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+    }
+
+    // System theme listener for mobile
+    systemDarkMode.addEventListener('change', updateThemeForSystem);
 
     if (toggleBtn) {
         toggleBtn.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('salamah-theme', newTheme);
-            window.updateConsole();
+            // Only allow manual toggle on desktop
+            if (!isMobile()) {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('salamah-theme', newTheme);
+                window.updateConsole();
+            }
         });
     }
 
